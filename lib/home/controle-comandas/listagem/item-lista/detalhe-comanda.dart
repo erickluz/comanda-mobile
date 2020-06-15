@@ -79,6 +79,7 @@ class _DetalheComandaState extends State<DetalheComanda> {
               ListaItensComanda(
                 itensComanda: itensComanda,
                 adicionaItemComanda: adicionarItemNaComanda,
+                numeroMesa: numeroComanda,
               ),
               DescricaoComanda()
             ],
