@@ -1,0 +1,246 @@
+{
+   "comandas":[
+      {
+         "id":1,
+         "numero":11,
+         "nomeCliente":"Erick",
+         "horarioAbertura":"19:22:33",
+         "horarioFechamento": null,
+         "valorTotal": 2.50,
+         "itensComanda":[
+            {
+               "id":1,
+               "quantidade":25,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            },
+            {
+               "id":2,
+               "quantidade":3,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            },
+            {
+               "id":3,
+               "quantidade":12,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            },
+            {
+               "id":4,
+               "quantidade":7,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            }
+         ]
+      },
+      {
+         "id":2,
+         "numero":20,
+         "nomeCliente":"Luiz",
+         "horarioAbertura":"00:22:33",
+         "horarioFechamento":null,
+         "valorTotal":25.50,
+         "itensComanda":[
+            {
+               "id":1,
+               "quantidade":25,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            }
+         ]
+      },
+      {
+         "id":3,
+         "numero":30,
+         "nomeCliente":null,
+         "horarioAbertura":"22:22:33",
+         "horarioFechamento":null,
+         "valorTotal":2.50,
+         "itensComanda":[
+            {
+               "id":1,
+               "quantidade":25,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            },
+            {
+               "id":2,
+               "quantidade":3,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            },
+            {
+               "id":3,
+               "quantidade":12,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            },
+            {
+               "id":4,
+               "quantidade":7,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            }
+         ]
+      },
+      {
+         "id":4,
+         "numero":40,
+         "nomeCliente":null,
+         "horarioAbertura":"23:22:33",
+         "horarioFechamento":null,
+         "valorTotal":56.50,
+         "itensComanda":[
+            {
+               "id":1,
+               "quantidade":12,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            },
+            {
+               "id":2,
+               "quantidade":12,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            },
+            {
+               "id":3,
+               "quantidade":12,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            },
+            {
+               "id":4,
+               "quantidade":12,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            },
+            {
+               "id":5,
+               "quantidade":12,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            },
+            {
+               "id":6,
+               "quantidade":12,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            },
+            {
+               "id":7,
+               "quantidade":12,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            },
+            {
+               "id":8,
+               "quantidade":12,
+               "produto": {
+                  "id" : 1,
+                  "nome" : "Bata Frita",
+                  "preco" : 2.56
+               }
+            }
+         ]
+      }
+   ],
+   "produtos":[
+      {
+         "id":1,
+         "nome":"Cerveja Subzero 355ml",
+         "preco":2.50
+      },
+      {
+         "id":2,
+         "nome":"Cerveja Brahama 355ml",
+         "preco":3.50
+      },
+      {
+         "id":3,
+         "nome":"Cerveja Antactica 355ml",
+         "preco":2.50
+      },
+      {
+         "id":4,
+         "nome":"Cerveja Original 600ml",
+         "preco":12.50
+      },
+      {
+         "id":5,
+         "nome":"Meia porção batata-frita",
+         "preco": 22.0
+      },
+      {
+         "id":6,
+         "nome":"Porção batata-frita",
+         "preco":44.50
+      },
+      {
+         "id":7,
+         "nome":"Copo Chopp 500ml Brahama",
+         "preco":8.50
+      },
+      {
+         "id":8,
+         "nome":"Copo Chopp 500ml Ecobier",
+         "preco":2.50
+      }
+   ],
+   "perfil":{
+      "id":"1235678",
+      "nomeUsuario":"erickluz10",
+      "senha":"123456",
+      "email":"erickluz@gmail.com",
+      "dataCadastro":"22/05/2020"
+   }
+}
