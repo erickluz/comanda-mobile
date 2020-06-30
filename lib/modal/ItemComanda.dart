@@ -1,6 +1,6 @@
-import 'package:comanda/modal/produto.dart';
+import 'package:comanda/modal/Produto.dart';
 
-class ItemComanda{
+class ItemComanda {
   int id;
   int quantidade;
   Produto produto;
@@ -8,12 +8,9 @@ class ItemComanda{
   ItemComanda({this.id, this.produto, this.quantidade});
 
   factory ItemComanda.fromJson(Map<String, dynamic> json) {
-    
     return ItemComanda(
-      id: json['id'],
-      quantidade: json['quantidade'],
-      produto: Produto.fromJson(json['produto'])
-    );
+        id: json['id'],
+        quantidade: json['quantidade'],
+        produto: Produto.fromJson(json['produto']));
   }
-
 }

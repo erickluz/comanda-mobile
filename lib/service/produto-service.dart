@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:comanda/modal/produto.dart';
+import 'package:comanda/modal/Produto.dart';
 import 'package:comanda/service/config.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';

@@ -1,7 +1,7 @@
 import 'package:comanda/modal/ItemComanda.dart';
-import 'package:comanda/modal/produto.dart';
+import 'package:comanda/modal/Produto.dart';
 
-class Comanda{
+class Comanda {
   int id;
   int numero;
   String nomeCliente;
@@ -10,13 +10,21 @@ class Comanda{
   double valorTotal;
   List<ItemComanda> itensComanda = new List<ItemComanda>();
 
-  Comanda({this.id, this.numero, this.nomeCliente, this.horaAbertura, this.horaFechamento, this.valorTotal, this.itensComanda});
+  Comanda(
+      {this.id,
+      this.numero,
+      this.nomeCliente,
+      this.horaAbertura,
+      this.horaFechamento,
+      this.valorTotal,
+      this.itensComanda});
 
   factory Comanda.fromJson(Map<String, dynamic> json) {
-
     List<ItemComanda> listaComanda;
-    if (json['itensComanda'] != null){
-      listaComanda = (json['itensComanda'] as List).map((itemComanda) => ItemComanda.fromJson(itemComanda)).toList();
+    if (json['itensComanda'] != null) {
+      listaComanda = (json['itensComanda'] as List)
+          .map((itemComanda) => ItemComanda.fromJson(itemComanda))
+          .toList();
     }
 
     return Comanda(
@@ -30,8 +38,9 @@ class Comanda{
     );
   }
 
-  void adicionarItemComanda(Produto produto, int quantidade){
-    this.itensComanda.add(new ItemComanda(produto: produto, quantidade: quantidade));
+  void adicionarItemComanda(Produto produto, int quantidade) {
+    this
+        .itensComanda
+        .add(new ItemComanda(produto: produto, quantidade: quantidade));
   }
-
 }

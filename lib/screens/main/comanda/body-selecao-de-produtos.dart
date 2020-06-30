@@ -1,4 +1,4 @@
-import 'package:comanda/modal/produto.dart';
+import 'package:comanda/modal/Produto.dart';
 import 'package:comanda/service/produto-service.dart';
 import 'package:flutter/material.dart';
 
@@ -78,10 +78,10 @@ class ItemListaProduto extends StatelessWidget {
   }
 }
 
-class SelecaoProduto extends StatefulWidget {
+class BodySelecaoProduto extends StatefulWidget {
   final Produto produtoSelecionado;
   final Function(Produto produto) selecionarProduto;
-  SelecaoProduto(
+  BodySelecaoProduto(
       {Key key,
       @required this.produtoSelecionado,
       @required this.selecionarProduto});
@@ -91,7 +91,7 @@ class SelecaoProduto extends StatefulWidget {
       _SelecaoProdutoState(this.produtoSelecionado, this.selecionarProduto);
 }
 
-class _SelecaoProdutoState extends State<SelecaoProduto> {
+class _SelecaoProdutoState extends State<BodySelecaoProduto> {
   Produto produtoSelecionado;
   Function selecionarProduto;
   List<Produto> produtos = new List();

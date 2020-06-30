@@ -1,28 +1,25 @@
-import 'package:comanda/home/controle-comandas/listagem/item-lista/item-lista-comanda.dart';
-import 'package:comanda/modal/comanda.dart';
+import 'package:comanda/modal/Comanda.dart';
+import 'package:comanda/screens/main/comanda/components/item-de-comanda.dart';
 import 'package:comanda/service/comanda-service.dart';
-import 'package:comanda/util/util.dart';
 import 'package:flutter/material.dart';
 
-class ListaItensComanda extends StatelessWidget {
+class BodyListagemItensComanda extends StatelessWidget {
   final List<ItemListaComanda> itensComanda;
   final Function(String nomeItem, double preco, int quantidade)
       adicionaItemComanda;
+  final double valorTotalDaComanda;
   final int numeroMesa;
-  ComandaService service = new ComandaService();
-  
-  ListaItensComanda({Key key, this.itensComanda, this.adicionaItemComanda, @required this.numeroMesa});
 
-  String valorTotalDaComanda() {
-    double valorTotal = 0;
-    for (ItemListaComanda item in itensComanda) {
-      valorTotal += item.preco * item.quantidade;
-    }
-    return Util.formataDinheiro(valorTotal);
-  }
+  BodyListagemItensComanda(
+      {Key key,
+      this.itensComanda,
+      this.adicionaItemComanda,
+      @required this.valorTotalDaComanda,
+      @required this.numeroMesa});
 
   @override
   Widget build(BuildContext context) {
+    ComandaService service = new ComandaService();
     return Scaffold(
       body: Column(
         children: [
@@ -99,7 +96,7 @@ class ListaItensComanda extends StatelessWidget {
                     child: Container(
                       width: 150,
                       height: 50,
-                      child: Text("Preço Total: \n " + valorTotalDaComanda(),
+                      child: Text("Preço Total: \n R\$ $valorTotalDaComanda",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 23,

@@ -1,15 +1,15 @@
+import 'package:comanda/screens/main/comanda/components/card-comanda.dart';
 import 'package:comanda/service/comanda-service.dart';
 import 'package:flutter/material.dart';
-import 'package:comanda/home/controle-comandas/listagem/item-lista/box-comanda.dart';
-import 'package:comanda/modal/comanda.dart';
+import 'package:comanda/modal/Comanda.dart';
 
-class ListaComanda extends StatefulWidget {
+class BodyListagemComandas extends StatefulWidget {
   @override
-  _ListaComandaState createState() => _ListaComandaState();
+  _BodyListagemComandas createState() => _BodyListagemComandas();
 }
 
-class _ListaComandaState extends State<ListaComanda>
-    with AutomaticKeepAliveClientMixin<ListaComanda> {
+class _BodyListagemComandas extends State<BodyListagemComandas>
+    with AutomaticKeepAliveClientMixin<BodyListagemComandas> {
   int _contador = 1;
   List<Widget> comandas = new List<Widget>();
   GlobalKey<RefreshIndicatorState> refreshKey =
@@ -18,7 +18,7 @@ class _ListaComandaState extends State<ListaComanda>
   void _adicionaComanda() {
     setState(() {
       _contador++;
-      comandas.add(BoxComanda(
+      comandas.add(CardComanda(
         numeroDaMesa: _contador,
       ));
     });
@@ -56,7 +56,7 @@ class _ListaComandaState extends State<ListaComanda>
                             if (snapshot.hasData) {
                               List<Comanda> comandasService = snapshot.data;
                               comandasService.forEach((comandaS) {
-                                comandas.add(BoxComanda(
+                                comandas.add(CardComanda(
                                   numeroDaMesa: comandaS.numero,
                                 ));
                               });

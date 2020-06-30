@@ -1,28 +1,26 @@
-import 'dart:developer';
-
-import 'package:comanda/home/controle-comandas/listagem/item-lista/descricao-comanda.dart';
-import 'package:comanda/home/controle-comandas/listagem/item-lista/item-lista-comanda.dart';
-import 'package:comanda/home/controle-comandas/listagem/lista-item-comanda.dart';
-import 'package:comanda/modal/produto.dart';
-import 'package:comanda/selecao-produto.dart';
-import 'package:comanda/service/comanda-service.dart';
+import 'package:comanda/modal/Produto.dart';
+import 'package:comanda/screens/main/comanda/body-descricao-comanda.dart';
+import 'package:comanda/screens/main/comanda/body-listagem-de-itens-comanda.dart';
+import 'package:comanda/screens/main/comanda/body-selecao-de-produtos.dart';
+import 'package:comanda/screens/main/comanda/components/item-de-comanda.dart';
+import 'package:comanda/util/util.dart';
 import 'package:flutter/material.dart';
 
-class DetalheComanda extends StatefulWidget {
+class BodyComanda extends StatefulWidget {
   final int numeroComanda;
-  DetalheComanda({this.numeroComanda});
+  BodyComanda({this.numeroComanda});
 
   @override
-  _DetalheComandaState createState() => _DetalheComandaState(numeroComanda: numeroComanda);
+  _BodyComanda createState() => _BodyComanda(numeroComanda: numeroComanda);
 }
 
-class _DetalheComandaState extends State<DetalheComanda> {
+class _BodyComanda extends State<BodyComanda> {
   final numeroComanda;
-  _DetalheComandaState({this.numeroComanda});
+  _BodyComanda({this.numeroComanda});
   List<ItemListaComanda> itensComanda = new List<ItemListaComanda>();
   List<Produto> produtos = new List();
   Produto produto;
-  ComandaService service;
+  double valorTotalComanda = 0;
 
   void selecionarProduto(Produto produto) {
     setState(() {
@@ -31,8 +29,17 @@ class _DetalheComandaState extends State<DetalheComanda> {
         preco: produto.preco,
         quantidade: 1,
       ));
-      print(produto.id);
       Navigator.pop(context);
+    });
+  }
+
+  double valorTotalDaComanda() {
+    setState(() {
+      double valorTotal = 0;
+      for (ItemListaComanda item in itensComanda) {
+        valorTotal += item.preco * item.quantidade;
+      }
+      return Util.formataDinheiro(valorTotal);
     });
   }
 
@@ -40,7 +47,7 @@ class _DetalheComandaState extends State<DetalheComanda> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => SelecaoProduto(
+            builder: (context) => BodySelecaoProduto(
                   produtoSelecionado: produto,
                   selecionarProduto: selecionarProduto,
                 )));
@@ -48,9 +55,6 @@ class _DetalheComandaState extends State<DetalheComanda> {
 
   @override
   Widget build(BuildContext context) {
-    service = new ComandaService();
-    print('Comanda selecionada');
-    print(service.buscaComandaCompleta(this.numeroComanda));
     return DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -65,7 +69,6 @@ class _DetalheComandaState extends State<DetalheComanda> {
                 )
               ],
             ),
-            leading: Icon(Icons.arrow_back),
             title: Text("Comanda"),
             actions: [
               Icon(Icons.print),
@@ -76,12 +79,13 @@ class _DetalheComandaState extends State<DetalheComanda> {
           ),
           body: TabBarView(
             children: [
-              ListaItensComanda(
+              BodyListagemItensComanda(
                 itensComanda: itensComanda,
                 adicionaItemComanda: adicionarItemNaComanda,
+                valorTotalDaComanda: valorTotalComanda,
                 numeroMesa: numeroComanda,
               ),
-              DescricaoComanda()
+              BodyDescricaoComanda()
             ],
           ),
         ));

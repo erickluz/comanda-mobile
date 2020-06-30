@@ -2,7 +2,7 @@ import 'package:comanda/util/componentes/input-text-form.dart';
 import 'package:comanda/util/componentes/label.dart';
 import 'package:flutter/material.dart';
 
-class DescricaoComanda extends StatelessWidget {
+class BodyDescricaoComanda extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -30,7 +30,9 @@ class DescricaoComanda extends StatelessWidget {
                       LabelTexto(texto: horarioFechamento),
                     ],
                   ),
-                  InputTextForm(label: "Nome do cliente",),
+                  InputTextForm(
+                    label: "Nome do cliente",
+                  ),
                 ],
               ),
             ),

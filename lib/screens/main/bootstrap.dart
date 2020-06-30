@@ -1,6 +1,6 @@
+import 'package:comanda/screens/main/comanda/body-listagem-de-comandas.dart';
+import 'package:comanda/screens/main/home/home.dart';
 import 'package:flutter/material.dart';
-import 'home/home.dart';
-import 'home/controle-comandas/listagem/lista-comandas.dart';
 
 class Bootstrap extends StatefulWidget {
   @override
@@ -8,11 +8,10 @@ class Bootstrap extends StatefulWidget {
 }
 
 class _HomeState extends State<Bootstrap> with SingleTickerProviderStateMixin {
-  
   int telaSelecionada = 0;
   List<Widget> telasDoAplicativo = [
     Home(),
-    ListaComanda(),
+    BodyListagemComandas(),
   ];
 
   TabController _tabController;
@@ -20,11 +19,12 @@ class _HomeState extends State<Bootstrap> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(vsync: this, length: telasDoAplicativo.length,);
+    _tabController = TabController(
+      vsync: this,
+      length: telasDoAplicativo.length,
+    );
     _tabController.addListener(() {
-      setState(() {
-        
-      });
+      setState(() {});
     });
   }
 
@@ -42,7 +42,7 @@ class _HomeState extends State<Bootstrap> with SingleTickerProviderStateMixin {
       ),
       body: TabBarView(
         controller: _tabController,
-         children: telasDoAplicativo,
+        children: telasDoAplicativo,
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[

@@ -1,4 +1,4 @@
-import 'package:comanda/bootstrap.dart';
+import 'package:comanda/screens/main/bootstrap.dart';
 import 'package:flutter/material.dart';
 
 class PreLogin extends StatefulWidget {
