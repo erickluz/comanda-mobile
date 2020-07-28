@@ -9,53 +9,62 @@ class Bootstrap extends StatefulWidget {
 
 class _HomeState extends State<Bootstrap> with SingleTickerProviderStateMixin {
   int telaSelecionada = 0;
+
   List<Widget> telasDoAplicativo = [
     Home(),
     BodyListagemComandas(),
   ];
 
-  TabController _tabController;
+  PageController pageController = PageController(
+    initialPage: 0,
+    keepPage: true,
+  );
 
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(
-      vsync: this,
-      length: telasDoAplicativo.length,
+  Widget buildPageView() {
+    return PageView(
+      controller: pageController,
+      onPageChanged: (index) {
+        pageChanged(index);
+      },
+      children: telasDoAplicativo,
     );
-    _tabController.addListener(() {
-      setState(() {});
+  }
+
+  void pageChanged(int index) {
+    setState(() {
+      telaSelecionada = index;
     });
   }
 
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
+  void bottomTapped(int index) {
+    setState(() {
+      telaSelecionada = index;
+      pageController.animateToPage(index, duration: Duration(milliseconds: 500), curve: Curves.ease);
+    });
   }
+
+  // @override
+  // void dispose() {
+  //   _tabController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("Comandas"),
       ),
-      body: TabBarView(
-        controller: _tabController,
-        children: telasDoAplicativo,
-      ),
+      body: buildPageView(),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("Home")),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.view_list), title: Text("Comandas")),
+          BottomNavigationBarItem(icon: Icon(Icons.view_list), title: Text("Comandas")),
         ],
         currentIndex: telaSelecionada,
         onTap: (int index) {
-          setState(() {
-            telaSelecionada = index;
-          });
-          _tabController.animateTo(telaSelecionada);
+          bottomTapped(index);
         },
       ),
     );

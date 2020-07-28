@@ -1,25 +1,44 @@
+import 'package:comanda/modal/Produto.dart';
 import 'package:flutter/material.dart';
 import 'package:comanda/util/util.dart';
 
-class ItemListaComanda extends StatelessWidget {
-  final String nomeItem;
-  final double preco;
+class ComponenteItemComanda extends StatelessWidget {
+  final Produto produto;
   final int quantidade;
+  final Function(Produto produto, int quantidade) selecionarItemComanda;
+  final Function(int idProduto) removerItemComanda;
 
-  ItemListaComanda(
-      {Key key, this.nomeItem = "Item não cadastrado", this.preco = 0.0, this.quantidade = 1});
+  ComponenteItemComanda({Key key, this.produto, this.quantidade = 1, this.selecionarItemComanda, this.removerItemComanda});
+
+  Widget refreshBg() {
+    return Container(
+      alignment: Alignment.centerRight,
+      padding: EdgeInsets.only(right: 20.0),
+      color: Colors.red,
+      child: const Icon(
+        Icons.delete,
+        color: Colors.white,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(Icons.category),
-      title: Text(
-        this.nomeItem,
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+    return Dismissible(
+      key: Key(produto.nome),
+      background: refreshBg(),
+      child: ListTile(
+        leading: Icon(Icons.category),
+        title: Text(
+          produto.nome,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+        ),
+        subtitle: Text(
+          "Preço: " + Util.formataDinheiro(produto.preco * this.quantidade) + " Quantidade: $quantidade",
+        ),
+        onTap: () => selecionarItemComanda(this.produto, this.quantidade),
       ),
-      subtitle: Text(
-        "Preço: " + Util.formataDinheiro(this.preco * this.quantidade) + " Quantidade: $quantidade",
-      ),
+      onDismissed: (direction) => removerItemComanda(produto.id),
     );
   }
 }
